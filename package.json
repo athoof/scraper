@@ -1,0 +1,17 @@
+{
+  "name": "scraper",
+  "version": "0.0.1",
+  "author": "athoof",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
+    "request": "^2.87.0",
+    "rimraf": "^2.6.2"
+  }
+}
