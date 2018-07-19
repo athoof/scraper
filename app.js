@@ -29,17 +29,19 @@ app.get('/', (req, res) => {
     // generateURL(1, 13); //grab urls of pages 1 to 13
 
     // urls.forEach(url => {//will loop through each url, commented out for testing on one url for now
-    request('http://ibay.com.mv/apartments-houses-for-rent-b25_3.html', (error, response, html) => {
+    request('http://ibay.com.mv/apartments-houses-for-rent-b25_7.html', (error, response, html) => {
         if (error)
             throw error;
         var $ = cheerio.load(html);
 
         console.log($);
 
-        let data = $('.iw-list-view-heading-col').first();
-        var rooms = data.find('span').text();
+        let data = $('.iw-list-view-heading-col').first();//only first result per url for testing
+        rooms = data.find('.iw-item-cond').text();//strip html and return string
+        rooms = Number.parseInt(rooms[rooms.search(/\d/)], 10);//search for a digit and convert to int
+        console.log(rooms);
         json.rooms = rooms;
-        json.release = 'test';
+        json.rent = 'test';
 
         if (response)
             res.send(json)
